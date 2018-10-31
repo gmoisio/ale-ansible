@@ -1,0 +1,12 @@
+---
+- hosts: Omniswitch
+  gather_facts: no
+  connection: local
+  tasks:
+  - name: RUN 'SHOW VLAN'
+    ios_command:
+      commands:
+        - show vlan
+    register: before_base
+  - debug: var=before_base.stdout_lines
+  
